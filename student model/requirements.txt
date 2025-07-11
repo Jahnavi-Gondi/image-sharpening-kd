@@ -1,12 +1,16 @@
 To run the train_student.py and test_student.py, have to clone the NAFNet model to the present student model and 
 after cloning we will the NAFNet model, from that we have to install the requirements which are present in the requirements.txt
 
-For deployment.py, have to install OBS studio(Open Broadcaster Software Studio) 
+For deployment.py to convert the model to onnx model
 We have to install the following requirements
 pip install torch torchvision
 pip install opencv-python
 pip install numpy
 pip install tqdm
+alredy the model is converted into onnx model saved as student_model.onnx
+
+
+Have to install OBS studio(Open Broadcaster Software Studio)
 After installing run deploy_dhrpening.py the obs camera will start running and uh can use it for video conferncing when 
 the internet is not proper or in loe bandwidth
 
