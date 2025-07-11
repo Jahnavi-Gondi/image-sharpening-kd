@@ -7,3 +7,6 @@ Deployment
 To run the deployment.py we have to install commands which are in requirements.txt
 make sure that the best epoch path that is student_epoch_110.pth is present in the folder
 
+The images in the "student model output images" are the output of the test_student.py for the 110th epoch. they are saved as test_outputs as per the code.
+
+
