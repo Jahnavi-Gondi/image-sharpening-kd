@@ -24,6 +24,8 @@ We curated a custom dataset of ~17,000 high-resolution images from:
 
 Dataset available on request
 
+Note: There are few other datasets like GoPro,RealBlur (RealBlur-J / RealBlur-R), etc that you can use directly
+
 ### 💡 Preprocessing:
 
 - Applied controlled blur: Bicubic downscaling + Gaussian blur
@@ -104,18 +106,20 @@ Runs in real time on CPU (~15–20 FPS) and can enhance webcam feed in Zoom, Mee
 ├── deploy_sharpening.py    # Virtual webcam output
 ├── README.md               # Project overview
 
-### 📚 References
-Restormer GitHub
 
-NAFNet GitHub
+## 📚 References
 
-Intel® Unnati Program
+- [Restormer: Efficient Transformer for High-Resolution Image Restoration (CVPR 2022)](https://github.com/swz30/Restormer)
+- [NAFNet: Nonlinear Activation Free Network for Image Restoration (ECCV 2022)](https://github.com/megvii-research/NAFNet)
+- [Intel® Unnati Industrial Training Program](https://www.intel.com/content/www/us/en/education/unnati.html)
+- [ONNX Runtime](https://onnxruntime.ai)
+- [OBS Studio – Open Broadcaster Software](https://obsproject.com)
+- [PyTorch Deep Learning Framework](https://pytorch.org)
+- [OpenCV – Open Source Computer Vision Library](https://opencv.org)
+- [COCO Dataset](https://cocodataset.org)
 
-ONNX Runtime
 
-OBS Studio
-
-### 🙌 Acknowledgements
+## 🙌 Acknowledgements
 Developed by:
 
 Jahnavi Gondi
