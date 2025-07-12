@@ -61,18 +61,16 @@ Each subset allowed the student model to gradually generalize to real-world dist
 ###  Student Model: NAFNet-Tiny
 NAFNet-Tiny is a lightweight CNN-based version of the original NAFNet, designed for real-time deployment and edge-device compatibility. It retains the core design of NAFNet but drastically reduces parameter count, making it much faster and memory-efficient.
 
-🔍 Architecture Comparison
-Feature	Original NAFNet	NAFNet-Tiny (Ours)
-Total Parameters	~17.0 Million	~0.7 Million (~698K)
-Feature Width	64	16
-NAFBlocks (Total)	72 (16+4+16+16+20)	26 (16+2+8)
-Encoder Blocks	[2, 2, 4, 8] (example)	[2, 2, 4, 8]
-Middle Blocks	20	2
-Decoder Blocks	[2, 2, 2, 2]	[2, 2, 2, 2]
-Input Resolution	Flexible	256×256 patches (train)
-ONNX Support	✅	✅
-Inference Speed (CPU)	Slower	15–20 FPS on CPU
-Suitable For	GPUs, Offline Tasks	Webcam, OBS, Edge devices
+| Feature               | Original NAFNet     | NAFNet-Tiny (Ours) |
+|-----------------------|----------------------|---------------------|
+| Parameters            | ~17.0M               | ~0.7M               |
+| Feature Width         | 64                   | 16                  |
+| Total NAFBlocks       | 72                   | 26                  |
+| Middle Blocks         | 20                   | 2                   |
+| FPS (CPU)             | Slow                 | 15–20 FPS           |
+| ONNX Export           | ❌                   | ✅                  |
+| Deployment Ready      | Not suitable         | ✅ Real-time         |
+
 
 ➡️ Inference Optimization: Despite being ~25× smaller than full NAFNet, the Tiny version preserves much of the teacher's visual fidelity.
 
@@ -104,12 +102,15 @@ Medium: Bicubic 1.5 + Gaussian 0.8
 
 Low: Bicubic 1.2 + Gaussian 0.4
 
-✅ SSIM Scores – Full Images:
-Blur Level	SSIM (Student)	SSIM (Teacher – Restormer)
-Heavy	88	~90
-Medium	93	~95
-Low	95	~96
-Average	≈92.0	≈94.0–95.0
+### 🔬 SSIM Comparison (Full Images)
+
+| Blur Level | NAFNet-Tiny (Student) | Restormer (Teacher) |
+|------------|------------------------|----------------------|
+| Heavy      | 88                     | ~90                  |
+| Medium     | 93                     | ~95                  |
+| Low        | 95                     | ~96                  |
+| **Average**| **≈92.0**              | ≈94.0–95.0           |
+
 
 ➡️ The student closely matched Restormer performance, especially on medium and low blur cases, with only ~4% parameter cost.
 
@@ -126,12 +127,15 @@ Student Output
 
 Asked to rate sharpness on a scale of 1–5
 
-🧩 Survey Results (Average Ratings):
-Output Type	Avg. Rating (/5)
-Blurred Image	~3.0
-Teacher Output	~3.7
-Student Output	~4.3
-Ground Truth	5.0
+### 🧠 Visual Quality Survey (Average Ratings / 5)
+
+| Output Type     | Average Rating |
+|------------------|----------------|
+| Blurred Image    | 3.0            |
+| Teacher Output   | 3.7            |
+| Student Output   | **4.3**        |
+| Ground Truth     | 5.0            |
+
 
 ➡️ NAFNet-Tiny was consistently rated closer to ground truth, sometimes outperforming the teacher in perceived sharpness due to cleaner edges.
 
@@ -146,7 +150,7 @@ OBS Studio virtual camera
 
 Zoom / Google Meet / MS Teams
 
-🚀 Deployment
+### 🚀 Deployment
 Student model exported to ONNX
 
 Integrated with OBS Virtual Camera
