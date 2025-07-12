@@ -5,8 +5,10 @@ This repository contains a lightweight (student) version of the original [NAFNet
 ---
 
 student-model/
+
+|-- NAFNet                        # must be cloned           
 ├── nafnet_tiny.py         
-├── train_student.py        
+├── train_student.py              # Script to train the student model
 ├── test_student.py         
 ├── utils.py                
 ├── dataset.py              
