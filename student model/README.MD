@@ -82,7 +82,7 @@ to run this must instal "OBS studio" in the pc and after installing set up the O
 then run python deploy_sharpening.py the OBS camera will open automatically and the inference time and FPS is calculate
 
   - as we are running it on CPU we got 
-                FPS = 20 - 25
+                FPS = 15 - 20
   - this model will cross above 30 if is is run on high GPU
 
 
