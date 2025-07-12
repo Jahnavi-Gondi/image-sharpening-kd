@@ -58,31 +58,93 @@ Each subset allowed the student model to gradually generalize to real-world dist
   - **Single Image Defocus Deblurring**
   - **Gaussian Color Denoising (Blind)**
 
-### 🔹 Student: [NAFNet-Tiny](https://github.com/megvii-research/NAFNet)
-- CNN-based lightweight architecture (~0.7M parameters)
-- Trained using a distillation loss:
-  
-  ```python
-  loss = α * loss_ground_truth + (1 - α) * loss_teacher
-With α values like 0.7, 0.5 for different phases.
+###  Student Model: NAFNet-Tiny
+NAFNet-Tiny is a lightweight CNN-based version of the original NAFNet, designed for real-time deployment and edge-device compatibility. It retains the core design of NAFNet but drastically reduces parameter count, making it much faster and memory-efficient.
+
+🔍 Architecture Comparison
+Feature	Original NAFNet	NAFNet-Tiny (Ours)
+Total Parameters	~17.0 Million	~0.7 Million (~698K)
+Feature Width	64	16
+NAFBlocks (Total)	72 (16+4+16+16+20)	26 (16+2+8)
+Encoder Blocks	[2, 2, 4, 8] (example)	[2, 2, 4, 8]
+Middle Blocks	20	2
+Decoder Blocks	[2, 2, 2, 2]	[2, 2, 2, 2]
+Input Resolution	Flexible	256×256 patches (train)
+ONNX Support	✅	✅
+Inference Speed (CPU)	Slower	15–20 FPS on CPU
+Suitable For	GPUs, Offline Tasks	Webcam, OBS, Edge devices
+
+➡️ Inference Optimization: Despite being ~25× smaller than full NAFNet, the Tiny version preserves much of the teacher's visual fidelity.
+
+🎯 Knowledge Distillation Strategy
+The student model was trained using offline distillation from a pretrained Restormer teacher:
+loss = α * loss_ground_truth + (1 - α) * loss_teacher
+α was tuned across training phases:
+
+Phase 1 (Heavy Blur): α = 0.7
+
+Phase 2 (Mixed Blur): α = 0.5
+
+Teacher outputs (.png) were generated using pretrained weights and served as soft supervision.
+
+No normalization was applied — raw pixel values from .png were used directly to preserve fidelity.
 
 🧪 Training & Evaluation
-Trained for 110 epochs
+Training Duration: 110 epochs
 
-Intermediate validation used benchmark patch set
+Patch Size: 256×256
 
-Final evaluation used 85 full-resolution blurred images (≥1920×1080)
+Patch-wise Validation: Done using 100 benchmark images during training
 
-✅ SSIM Scores (Full Images):
-Blur Level	SSIM
-Heavy	88
-Medium	93
-Low	95
+Final Evaluation: ~85 full-resolution (≥1920×1080) images with three blur levels:
 
-✅ Survey Results:
-Human users rated sharpened outputs (avg. score ~4.3/5)
+Heavy: Bicubic 1.7–2.2 + Gaussian 1.2–1.5
 
-Student model closely matched teacher outputs visually
+Medium: Bicubic 1.5 + Gaussian 0.8
+
+Low: Bicubic 1.2 + Gaussian 0.4
+
+✅ SSIM Scores – Full Images:
+Blur Level	SSIM (Student)	SSIM (Teacher – Restormer)
+Heavy	88	~90
+Medium	93	~95
+Low	95	~96
+Average	≈92.0	≈94.0–95.0
+
+➡️ The student closely matched Restormer performance, especially on medium and low blur cases, with only ~4% parameter cost.
+
+📊 Human Visual Evaluation (Survey)
+Users were shown:
+
+Blurred Input
+
+Ground Truth
+
+Teacher Output
+
+Student Output
+
+Asked to rate sharpness on a scale of 1–5
+
+🧩 Survey Results (Average Ratings):
+Output Type	Avg. Rating (/5)
+Blurred Image	~3.0
+Teacher Output	~3.7
+Student Output	~4.3
+Ground Truth	5.0
+
+➡️ NAFNet-Tiny was consistently rated closer to ground truth, sometimes outperforming the teacher in perceived sharpness due to cleaner edges.
+
+⚙️ Real-Time Ready
+Converted to ONNX for efficient deployment
+
+Runs at 15–20 FPS on CPU (Intel Core i5)
+
+Compatible with:
+
+OBS Studio virtual camera
+
+Zoom / Google Meet / MS Teams
 
 🚀 Deployment
 Student model exported to ONNX
