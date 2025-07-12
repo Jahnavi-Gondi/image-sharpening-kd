@@ -1,4 +1,4 @@
-# 🧠 Image Sharpening Using Knowledge Distillation
+#  Image Sharpening Using Knowledge Distillation
 
 This project aims to enhance image clarity in real-time applications (like video conferencing) by training a lightweight student model (NAFNet-Tiny) using knowledge distillation from a powerful teacher model (Restormer). It was developed as part of the **Intel Unnati Industrial Training 2025**.
 
