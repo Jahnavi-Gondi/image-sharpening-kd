@@ -4,9 +4,7 @@ This repository contains a lightweight (student) version of the original [NAFNet
 
 ---
 
-## 📁 Project Structure
 student-model/
-|-- NAFNet                   # must to be cloned
 ├── nafnet_tiny.py           # Defines the student NAFNet Tiny model architecture
 ├── train_student.py         # Script to train the student model using ground truth images
 ├── test_student.py          # Script to evaluate the trained model on test datasets
@@ -18,6 +16,7 @@ student-model/
 ├── student_model.onnx       # ONNX exported model for deployment/inference
 ├── README.md                # Project documentation (you’re reading it!)
 └── requirements.txt         # List of required Python libraries
+
 
 
 
