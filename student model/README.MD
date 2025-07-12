@@ -8,7 +8,7 @@ student-model/
 
 |-- NAFNet                        # must be cloned           
 ├── nafnet_tiny.py         
-├── train_student.py              # Script to train the student model
+├── train_student.py              
 ├── test_student.py         
 ├── utils.py                
 ├── dataset.py              
