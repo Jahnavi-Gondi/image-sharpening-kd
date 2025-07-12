@@ -104,7 +104,7 @@ Runs in real time on CPU (~15–20 FPS) and can enhance webcam feed in Zoom, Mee
 ├── deploy_sharpening.py    # Virtual webcam output
 ├── README.md               # Project overview
 
-📚 References
+### 📚 References
 Restormer GitHub
 
 NAFNet GitHub
@@ -115,7 +115,7 @@ ONNX Runtime
 
 OBS Studio
 
-🙌 Acknowledgements
+### 🙌 Acknowledgements
 Developed by:
 
 Jahnavi Gondi
