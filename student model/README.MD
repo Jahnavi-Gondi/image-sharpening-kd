@@ -5,17 +5,17 @@ This repository contains a lightweight (student) version of the original [NAFNet
 ---
 
 student-model/
-├── nafnet_tiny.py           # Defines the student NAFNet Tiny model architecture
-├── train_student.py         # Script to train the student model using ground truth images
-├── test_student.py          # Script to evaluate the trained model on test datasets
-├── utils.py                 # Utility functions (e.g., PSNR, SSIM, image saving)
-├── dataset.py               # Custom PyTorch Dataset loader for training/testing
-├── deploy_sharpening.py     # Real-time image sharpening using ONNX and webcam
-├── deployment.py            # ONNX-based static image sharpening (CLI tool)
-├── student_epoch_XXX.pth    # Saved PyTorch weights from training (e.g., student_epoch_110.pth)
-├── student_model.onnx       # ONNX exported model for deployment/inference
-├── README.md                # Project documentation (you’re reading it!)
-└── requirements.txt         # List of required Python libraries
+├── nafnet_tiny.py         
+├── train_student.py        
+├── test_student.py         
+├── utils.py                
+├── dataset.py              
+├── deploy_sharpening.py     
+├── deployment.py            
+├── student_epoch_110.pth    
+├── student_model.onnx       
+├── README.md                
+└── requirements.txt         
 
 
 
